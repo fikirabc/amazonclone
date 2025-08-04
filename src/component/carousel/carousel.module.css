@@ -2,7 +2,7 @@
     position: relative;
 }
 
-/* .hero_img::before {
+.hero_img::before {
     content: ""; 
     position: absolute;
     bottom: 0;
@@ -11,4 +11,4 @@
     height: 200px;
     background-image: linear-gradient(to bottom, rgba(255,255,255,0), rgba(255,255,255));
  
-} */
+}
