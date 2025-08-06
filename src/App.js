@@ -1,13 +1,12 @@
+import "./App.css";
 
-import './App.css';
-import Pages from './pages/pages';
+import Routering from "./routing";
 
 function App() {
   return (
-    <div>
-      
-      <Pages />
-    </div>
+
+      <Routering />
+  
   );
 }
 

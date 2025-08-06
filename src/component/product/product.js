@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React, { useEffect, useState } from "react";
 import ProductCard from "../product/productCard";
 import axios from "axios"; // Make sure axios is imported

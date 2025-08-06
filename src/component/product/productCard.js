@@ -1,13 +1,13 @@
-import React from "react";
+// @ts-nocheck
 import Rating from "@mui/material/Rating";
 import CurrencyFormat from "../currency/currencyFormat";
-import Classes from "./product.module.css"
+import Classes from "../product/product.module.css"
 function productCard({ product }) {
-  const { image, title, id, rating, price } = product;
+  const { image, title, rating, price } = product;
   return (
     <div className={`${Classes.card_container}`}>
       <a href="/">
-        <img src={image} alt="picture" />
+        <img src={image} alt="pics" />
       </a>
       <div>
         <h4>{title}</h4>
