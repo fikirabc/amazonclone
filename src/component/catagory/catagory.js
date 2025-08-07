@@ -1,5 +1,6 @@
 import { categoryInfos } from "./catagoryFullInfo";
 import CatagoryCard from "./catagoryCard"; // Component should be exported as default or use named import
+// @ts-ignore
 import Classes from "./catagory.module.css";
 
 export default function Catagory() {

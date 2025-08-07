@@ -4,8 +4,8 @@ import Signin from "./pages/auth/signup"; // If it's signup, rename component or
 import Cart from "./pages/cart/cart";
 import Payments from "./pages/payment/payment";
 import ProductDetail from "./pages/productDetail/productDetail";
-import Result from "./pages/results/results";
-import Order from "./pages/order/order"
+import Results from "./pages/results/results";
+import Order from "./pages/order/order";
 
 function Routing() {
   return (
@@ -16,7 +16,8 @@ function Routing() {
         <Route path="/cart" element={<Cart />} />
         <Route path="/payments" element={<Payments />} />
         <Route path="/productdetail" element={<ProductDetail />} />
-        <Route path="/result" element={<Result />} />
+        <Route path="/catagory/:catagoryName" element={<Results />} />
+        <Route path="/products/:productId" element={<ProductDetail />} />
         <Route path="/Order" element={<Order />} />
       </Routes>
     </Router>
