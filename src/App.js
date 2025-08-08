@@ -3,11 +3,7 @@ import "./App.css";
 import Routering from "./routing";
 
 function App() {
-  return (
-
-      <Routering />
-  
-  );
+  return <Routering />;
 }
 
 export default App;

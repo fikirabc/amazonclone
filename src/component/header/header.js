@@ -6,8 +6,13 @@ import Classes from "./header.module.css"
 import { MdOutlineLocationOn } from "react-icons/md";
 import LowerHeader from './lowerHeader';
 import { Link } from 'react-router-dom';
+import { useContext } from 'react';
+import { DataContext } from '../dataProvider/dataProvider';
 
 const Header = () => {
+
+  const [{basket}, dispatch]=useContext(DataContext)
+  console.log(basket.length)
     return (
       <section>
         <section className={Classes.header_container}>
@@ -65,7 +70,7 @@ const Header = () => {
             </Link>
 
             <Link to="/cart" className={Classes.cart}>
-              <span>0 </span>
+              <span>{basket.length}</span>
               <BiCart />
             </Link>
           </div>
