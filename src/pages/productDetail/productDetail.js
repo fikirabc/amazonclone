@@ -7,21 +7,21 @@ import ProductCard from "../../component/product/productCard";
 function ProductDetail() {
   const { productId } = useParams();
   const [product, setProduct] = useState({});
- useEffect(() => {
-   axios
-     .get(`${productUrl}/products/${productId}`)
-     .then((res) => {
-       setProduct(res.data);
-     })
-     .catch((err) => {
-       console.log(err);
-     });
- }, []);
-
+  useEffect(() => {
+    axios
+      .get(`${productUrl}/products/${productId}`)
+      .then((res) => {
+  
+        setProduct(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
 
   return (
     <Layout>
-      <ProductCard product={product} />
+      <ProductCard product={product} flex={true} renderDesc={true}/>
     </Layout>
   );
 }
