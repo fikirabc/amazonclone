@@ -21,7 +21,12 @@ function ProductDetail() {
 
   return (
     <Layout>
-      <ProductCard product={product} flex={true} renderDesc={true}/>
+      <ProductCard
+        product={product}
+        flex={true}
+        renderDesc={true}
+        renderAdd={true}
+      />
     </Layout>
   );
 }

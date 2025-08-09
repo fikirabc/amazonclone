@@ -31,7 +31,7 @@ function Results() {
         <div className={Classes.products_container}>
           {results.map((product) => (
             // @ts-ignore
-            <ProductCard product={product} key={product.id} />
+            <ProductCard product={product} key={product.id} renderAdd={true} />
           ))}
         </div>
       </section>
