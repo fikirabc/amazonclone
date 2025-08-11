@@ -60,7 +60,7 @@ const Header = () => {
                   <option>EN</option>
                 </select>
               </Link>
-              <Link to="/signin">
+              <Link to="/auth">
                 <div>
                   <p>Sign In</p>
                   <span>Account & List</span>
