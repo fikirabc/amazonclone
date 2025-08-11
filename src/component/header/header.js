@@ -13,6 +13,9 @@ const Header = () => {
 
   const [{basket}, dispatch]=useContext(DataContext)
   console.log(basket.length)
+  const totalItem = basket?.reduce((amount,item)=>{
+    return item.amount + amount
+  },0)
     return (
       <section className={Classes.fixed}>
         <section>
@@ -71,7 +74,7 @@ const Header = () => {
               </Link>
 
               <Link to="/cart" className={Classes.cart}>
-                <span>{basket.length}</span>
+                <span>{totalItem}</span>
                 <BiCart />
               </Link>
             </div>
