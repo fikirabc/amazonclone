@@ -47,7 +47,7 @@ const Header = () => {
               </select>
 
               <input type="text" placeholder="Amazon Search" />
-              <FaSearch size={25} />
+              <FaSearch size={38} />
             </div>
 
             <div className={Classes.order_container}>

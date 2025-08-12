@@ -1,8 +1,48 @@
 // @ts-ignore
 import Classes from "./signup.module.css";
 import { Link } from "react-router-dom";
+import { auth } from "../../utillity/firebase";
+import { useState, useContext } from "react";
+import {
+  signInWithEmailAndPassword,
+  createUserWithEmailAndPassword,
+} from "firebase/auth";
+import { DataContext } from "../../component/dataProvider/dataProvider";
+import { Type } from "../../utillity/action.type";
+function Auth() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
 
-function auth() {
+  // @ts-ignore
+  const [{user}, dispatch] = useContext(DataContext);
+
+  console.log(user);
+
+  const authHandler = async (e) => {
+    e.preventDefault();
+    console.log(e.target.name);
+    if (e.target.name == "signin") {
+      signInWithEmailAndPassword(auth, email, password).then((userInfo) => {
+        dispatch({
+          type: Type.SET_USER,
+          user: userInfo.user,
+        });
+      });
+    } else {
+      createUserWithEmailAndPassword(auth, email, password)
+        .then((userInfo) => {
+          dispatch({
+            type: Type.SET_USER,
+            user: userInfo.user,
+          });
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
+  };
+
   return (
     <section className={Classes.login}>
       <Link to="/">
@@ -16,23 +56,48 @@ function auth() {
         <h1>Sign In</h1>
         <form action="">
           <div>
-            <lable htmlFor="email">Email</lable>
-            <input type="email" id="email" placeholder="sample@amazon.com"/>
+            <label htmlFor="email">Email</label>
+            <input
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              type="email"
+              id="email"
+              placeholder="sample@amazon.com"
+            />
           </div>
           <div>
-            <lable htmlFor="password">Password</lable>
-            <input type="Password" id="password" />
+            <label htmlFor="password">Password</label>
+            <input
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              type="Password"
+              id="password"
+            />
           </div>
-          <button className={Classes.login_signInButton}>Sign In</button>
+          <button
+            type="submit"
+            onClick={authHandler}
+            name="signin"
+            className={Classes.login_signInButton}
+          >
+            Sign In
+          </button>
         </form>
 
         <p>
           By continuing, you agree to Amazon's Conditions of Use and Privacy.
         </p>
-        <button className={Classes.login_registrationButton}>Create your Amazon Account</button>
+        <button
+          type="submit"
+          onClick={authHandler}
+          name="signup"
+          className={Classes.login_registrationButton}
+        >
+          Create your Amazon Account
+        </button>
       </div>
     </section>
   );
 }
 
-export default auth;
+export default Auth;
