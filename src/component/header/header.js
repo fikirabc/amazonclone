@@ -8,10 +8,11 @@ import LowerHeader from './lowerHeader';
 import { Link } from 'react-router-dom';
 import { useContext } from 'react';
 import { DataContext } from '../dataProvider/dataProvider';
+import { auth } from "../../utillity/firebase"
 
 const Header = () => {
 
-  const [{basket}, dispatch]=useContext(DataContext)
+  const [{user,basket}, dispatch]=useContext(DataContext)
   console.log(basket.length)
   const totalItem = basket?.reduce((amount,item)=>{
     return item.amount + amount
@@ -60,10 +61,19 @@ const Header = () => {
                   <option>EN</option>
                 </select>
               </Link>
-              <Link to="/auth">
+              <Link to={!user && "/auth"}>
                 <div>
-                  <p>Sign In</p>
-                  <span>Account & List</span>
+                  {user ? (
+                    <>
+                      <p>Hello, {user?.email?.split("@")[0]}</p>
+                      <span onClick={() => auth.signOut()}>Sign Out</span>
+                    </>
+                  ) : (
+                    <>
+                      <p>Hello, Sign In</p>
+                      <span>Account & List</span>
+                    </>
+                  )}
                 </div>
               </Link>
               <Link to="/order">
