@@ -6,7 +6,7 @@ const dotenv = require("dotenv");
 
 dotenv.config();
 
-
+// @ts-ignore
 const stripe = require("stripe")(process.env.STRIPE_KEY);
 
 const app = express();
@@ -20,15 +20,14 @@ app.get("/", (req, res) => {
 app.post("/payment/create", async (req, res) => {
   const total = req.query.total;
 
+  // @ts-ignore
   if (total >= 0) {
     const paymentIntent = await stripe.paymentIntents.create({
       amount: total,
       currency: "usd",
     });
     console.log(paymentIntent);
-    res.status(201).json({clientSecret: paymentIntent.clientSecret,
-        
-    });
+    res.status(201).json({ clientSecret: paymentIntent.clientSecret });
   } else {
     res.status(403).json({
       message: "Total must be greater then 0",
